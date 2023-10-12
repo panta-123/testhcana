@@ -23,7 +23,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: apanta123/hallcana
+          images: apanta123/hallsss
 
       -
         name: Login to DockerHub
