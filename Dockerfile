@@ -22,8 +22,8 @@ ADD https://github.com/JeffersonLab/hcana/archive/refs/tags/hcana-0.98.tar.gz .
 RUN tar -xvf hcana-0.98.tar.gz
 WORKDIR "/hcana-hcana-0.98"
 # TODO get the latest tag from halla analyzer repo
-ADD https://github.com/JeffersonLab/analyzer/archive/refs/tags/Release-176.tar.gz .
-RUN tar -xvf Release-176.tar.gz
+#ADD https://github.com/JeffersonLab/analyzer/archive/refs/tags/Release-176.tar.gz .
+#RUN tar -xvf Release-176.tar.gz
 RUN ls -l
 RUN mv  analyzer-Release-176/* /hcana-hcana-0.98/podd/
 RUN ls -l /hcana-hcana-0.98/podd/
