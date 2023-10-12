@@ -22,12 +22,10 @@ ADD https://github.com/JeffersonLab/hcana/archive/refs/tags/${APP_VERSION}.tar.g
 RUN tar -xvf ${APP_VERSION}.tar.gz
 WORKDIR "/${REPO_NAME}-${APP_VERSION}"
 # TODO get the latest tag from halla analyzer repo
-ADD https://github.com/JeffersonLab/analyzer/archive/refs/tags/Release-176.tar.gz .
-RUN tar -xvf Release-176.tar.gz
+ADD podd podd/
 RUN ls -l
 RUN mv  analyzer-Release-176/* /${REPO_NAME}-${APP_VERSION}/podd/
 RUN ls -l /${REPO_NAME}-${APP_VERSION}podd/
-SHELL ["/bin/bash", "-c"]
 RUN cmake -DCMAKE_INSTALL_PREFIX=$HOME/local/hcana -B build  -S /${REPO_NAME}-${APP_VERSION}
 RUN cmake --build build -j8
 RUN cmake --install build
