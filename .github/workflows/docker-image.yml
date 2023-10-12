@@ -17,7 +17,9 @@ jobs:
           ls -l
           pwd
           git submodule init
-          ls .gitmodule
+          git submodule update
+          ls -l podd/
+
       -
         name: Docker meta
         id: meta
