@@ -11,10 +11,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: recursive
+          submodules: 'true'
       - name: list files
         run: |
           ls -l
+          ls -l podd/
           pwd
           git submodule init
           git submodule update
@@ -35,15 +36,15 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      -
-        name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          context: "{{defaultContext}}"
-          push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          build-args: |
-            DOCKER_TAG=${{ steps.meta.outputs.tags }}
-            APP_VERSION=${{ github.ref_name}}
-            REPO_NAME=${{ github.event.repository.name }}
+      #-
+      #  name: Build and push
+      #  uses: docker/build-push-action@v5
+      #  with:
+      #    context: "{{defaultContext}}"
+      #    push: ${{ github.event_name != 'pull_request' }}
+      #    tags: ${{ steps.meta.outputs.tags }}
+      #   labels: ${{ steps.meta.outputs.labels }}
+      #    build-args: |
+      #      DOCKER_TAG=${{ steps.meta.outputs.tags }}
+      #      APP_VERSION=${{ github.ref_name}}
+      #      REPO_NAME=${{ github.event.repository.name }}
