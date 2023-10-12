@@ -14,12 +14,14 @@ jobs:
           submodules: true
       - name: list files
         run: |
+          cat .gitmodules
           ls -l
           ls -l podd/
           pwd
           git submodule init
           git submodule update
           ls -l podd/
+          cat .git/config
 
       -
         name: Docker meta
