@@ -1,0 +1,183 @@
+;
+; Parameters that were built into Fortran analyzer that we want
+; to pass as parameters so that the resulting code can be more generic.
+;
+
+hhodo_num_planes = 4
+hhodo_plane_names = "1x 1y 2x 2y"
+hhodo_AdcTimeWindowMin = 0., 0., 0., 0.
+hhodo_AdcTimeWindowMax = 3200., 3200., 3200., 3200.
+hhodo_adc_mode = 0 # Standard ADC
+
+hcal_num_layers = 4
+
+rraster_num_signals = 4
+
+# Exclusion band width for the calorimeter's fiducial volume.
+hcal_fv_delta = 5.
+
+# Constants for the coordiante correction of the calorimeter energy depositions
+hcal_a_cor = 200.
+hcal_b_cor = 8000.
+hcal_c_cor = 64.36, 64.36	# for positive and negative sides
+hcal_d_cor =  1.66,  1.66
+
+hcal_layer_names = "1pr 2ta 3ta 4ta"
+
+hcal_ADCMode = 0  # Standard mode (Not a flash ADC)
+
+haero_num_pairs = 8
+
+# Names of planes so that parameter names can be constructed
+hdc_plane_names = "1x1 1y1 1u1 1v1 1y2 1x2 2x1 2y1 2u1 2v1 2y2 2x2"
+
+# The following were defined in REPLAY.PARAM
+h_recon_coeff_filename =    'PARAM/hms_recon_coeff.dat'  ;hms optics matrix
+
+# The following are set to zero to replicate historical ENGINE behavior
+# For new analyses they should be set to 1.  If not defined here,
+# hcana will default 1, the new and correct behaviour.
+
+# If 1, Let a hit have different L/R assignment for different space points
+# instead of L/R assignment from first sp it appears in.
+hdc_fix_lr = 0
+# If 1, don't do the the propagation along the wire each time the hit
+# appears in a space point.  (Which means the correction accumulates)
+hdc_fix_propcorr = 0
+
+# SOS parameters
+shodo_num_planes = 4
+shodo_plane_names = "1x 1y 2x 2y"
+
+shodo_AdcTimeWindowMin = 0., 0., 0., 0.
+shodo_AdcTimeWindowMax = 3200., 3200., 3200., 3200.
+
+shodo_adc_mode = 0 # Standard ADC
+
+scal_num_layers = 4
+
+# Exclusion band width for the calorimeter's fiducial volume.
+# (saw) Don't know what this should be.  Copied it from HMS.
+scal_fv_delta = 5.
+
+# Constants for the coordiante correction of the calorimeter energy depositions
+scal_a_cor = 400.
+scal_b_cor = 12000.
+scal_c_cor = -87.1628, -100.	# The positive side constants reproduce
+scal_d_cor =  1.65054,    3.	# correction in Engine to accuracy better 0.005.
+
+scal_layer_names = "1pr 2ta 3ta 4ta"
+
+# Names of planes so that parameter names can be constructed
+sdc_plane_names = "1u1 1u2 1x1 1x2 1v1 1v2 2u1 2u2 2x1 2x2 2v1 2v2"
+
+# The following were defined in REPLAY.PARAM
+s_recon_coeff_filename =    'PARAM/sos_recon_coeff.dat'  ;sos optics matrix
+
+# Fortran ENGINE only had this as a parameter for HMS.  Need it here
+# because same code used for both spectrometers
+sntracks_max_fp = 10
+
+# The following are set to zero to replicate historical ENGINE behavior
+# For new analyses they should be set to 1.  If not defined here,
+# hcana will default 1, the new and correct behaviour.
+
+# If 1, Let a hit have different L/R assignment for different space points
+# instead of L/R assignment from first sp it appears in.
+sdc_fix_lr = 0
+# If 1, don't do the the propagation along the wire each time the hit
+# appears in a space point.  (Which means the correction accumulates)
+sdc_fix_propcorr = 0
+
+# Total number of PMTs in Gas Cherenkov detector.
+hcer_tot_pmts = 2
+
+#
+# Aerogel and Cerenkov parameters added in 3/31/2017
+#
+
+h_aero_six_gev_data = 1
+
+; Track matching reduced chi2 cut values
+haero_red_chi2_min = 0.0
+haero_red_chi2_max = 25.0
+
+; Track matching beta cut values
+haero_beta_min = 0.0
+haero_beta_max = 1.2
+
+; Track matching normailized energy (E/p) cut values
+haero_enorm_min = 0.0
+haero_enorm_max = 1.5
+
+; Track matching delta p (dp) cut values
+haero_dp_min = -20.0
+haero_dp_max = 25.0
+
+; ADC time window cut values used to select "good" ADC events
+haero_adcTimeWindowMin = 500.
+haero_adcTimeWindowMax = 2500.
+
+; NPE Threshold for "good" hit (for measureing effic.)
+haero_npe_thresh = 0.5
+
+; Value of zpos for diffusion box cited by Hamlet M. 03/29/2017
+; FIX ME! This value is for the SHMS!
+haero_diff_box_zpos = 231.0
+
+; Number of regions in which tracks can be matched too
+haero_num_regions = 1
+
+; phgcer_region: 8 values for each region
+; central x,y,dx,dy values and x,y,dx,dy half widths.
+; Defined in clomuns, region 1, region 2, region 3, region 4...
+; FIX ME! These values are for the SHMS!
+; Assumes rectangular volume with x = 103.0 cm and y = 113.0 cm
+haero_region =  0.0,
+                0.0,
+                0.0,
+                0.0,
+               51.5,
+               56.5,
+               0.15,
+                0.1
+
+hcer_red_chi2_min = 0.0
+hcer_red_chi2_max = 25.0
+
+hcer_enorm_min = 0.0
+hcer_enorm_max = 1.5
+
+; Track matching delta p (dp) cut values
+hcer_dp_min = -20.0
+hcer_dp_max = 25.0
+
+hcer_adcTimeWindowMin = 1500., 1500.
+hcer_adcTimeWindowMax = 3500., 3500.
+
+; Threshold for good hit (for measureing effic.)
+hcer_npe_thresh = 0.5
+
+hcer_num_regions = 3 ; This value is from the 6 GeV era
+
+; hcer_region: 8 values for each region (1 per mirror + sum)
+; central x,y,dx,dy values and x,y,dx,dy half widths.
+hcer_region =    30,  -30,   0,
+                  0,    0,   0,
+                  0,    0,   0,
+                  0,    0,   0,
+                 20,   20,  60,
+                 30,   30,  30,
+                 .1,   .1,  .1,
+                 .1,   .1,  .1
+;
+; New raster code assumes two rasters
+;
+gfrxa_adcpercm = gfrx_adcpercm
+gfrxb_adcpercm = gfrx_adcpercm
+gfrya_adcpercm = gfry_adcpercm
+gfryb_adcpercm = gfry_adcpercm
+gfrxa_adc_zero_offset = 0.0
+gfrxb_adc_zero_offset = 0.0
+gfrya_adc_zero_offset = 0.0
+gfryb_adc_zero_offset = 0.0
