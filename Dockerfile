@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 centos:centos7
+FROM  centos:centos7
 
 #ARG APP_VERSION
 #ARG REPO_NAME
