@@ -12,23 +12,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: true
-      - name: list files
-        run: |
-          cat .gitmodules
-          ls -l
-          ls -l podd/
-          pwd
-          git submodule init
-          git submodule update
-          ls -l podd/
-          cat .git/config
-
       -
         name: Docker meta
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: apanta123/hallsss
+          images: apanta123/hallcana
 
       -
         name: Login to DockerHub
@@ -38,15 +27,15 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      #-
-      #  name: Build and push
-      #  uses: docker/build-push-action@v5
-      #  with:
-      #    context: "{{defaultContext}}"
-      #    push: ${{ github.event_name != 'pull_request' }}
-      #    tags: ${{ steps.meta.outputs.tags }}
-      #   labels: ${{ steps.meta.outputs.labels }}
-      #    build-args: |
-      #      DOCKER_TAG=${{ steps.meta.outputs.tags }}
-      #      APP_VERSION=${{ github.ref_name}}
-      #      REPO_NAME=${{ github.event.repository.name }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: "{{defaultContext}}"
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            DOCKER_TAG=${{ steps.meta.outputs.tags }}
+            APP_VERSION=${{ github.ref_name}}
+            REPO_NAME=${{ github.event.repository.name }}
